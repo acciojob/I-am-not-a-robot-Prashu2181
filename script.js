@@ -1,11 +1,13 @@
 //your code here
 
+
+
 // Get the images and buttons
-const images = document.querySelectorAll('img');
-const resetButton = document.getElementById('reset');
-const verifyButton = document.getElementById('verify');
-const message = document.getElementById('h');
-const resultMessage = document.getElementById('para');
+let images;
+let resetButton;
+let verifyButton;
+let message;
+let resultMessage;
 
 // Define the image sources
 const imageSources = [
@@ -97,15 +99,25 @@ function handleVerifyButtonClick() {
   verifyButton.style.display = 'none';
 }
 
-// Add event listeners to the images and buttons
-images.forEach(image => {
-  image.addEventListener('click', handleImageClick);
+// Wait for the DOM to load
+document.addEventListener('DOMContentLoaded', () => {
+  // Get the images and buttons
+  images = document.querySelectorAll('img');
+  resetButton = document.getElementById('reset');
+  verifyButton = document.getElementById('verify');
+  message = document.getElementById('h');
+  resultMessage = document.getElementById('para');
+
+  // Add event listeners to the images and buttons
+  images.forEach(image => {
+    image.addEventListener('click', handleImageClick);
+  });
+
+  resetButton.addEventListener('click', handleResetButtonClick);
+
+  verifyButton.addEventListener('click', handleVerifyButtonClick);
+
+  // Shuffle the images initially
+  shuffleImages();
 });
-
-resetButton.addEventListener('click', handleResetButtonClick);
-
-verifyButton.addEventListener('click', handleVerifyButtonClick);
-
-// Shuffle the images initially
-shuffleImages();
 
